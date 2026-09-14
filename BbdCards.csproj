@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>BbdCards</AssemblyName>
+    <Version>0.1.0</Version>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GameDir Condition="'$(GameDir)' == ''">D:\SteamLibrary\steamapps\common\REPO</GameDir>
+    <RestorePackagesPath>$(MSBuildProjectDirectory)\.deps\packages</RestorePackagesPath>
+  </PropertyGroup>
+  <Import Project="local.props" Condition="Exists('local.props')" />
+  <PropertyGroup>
+    <ManagedDir>$(GameDir)\REPO_Data\Managed</ManagedDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src/**/*.cs" />
+    <CardTexture Include="assets/cards/*.png" />
+    <EmbeddedResource Include="@(CardTexture)">
+      <LogicalName>BbdCards.Cards.%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <Reference Include="BepInEx">
+      <HintPath>.deps/BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>.deps/0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="REPOLib">
+      <HintPath>.deps/REPOLib.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="$(ManagedDir)\*.dll" Exclude="$(ManagedDir)\System*.dll;$(ManagedDir)\mscorlib.dll;$(ManagedDir)\netstandard.dll">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <Target Name="CheckInputs" BeforeTargets="BeforeBuild">
+    <Error Condition="!Exists('$(ManagedDir)\Assembly-CSharp.dll')" Text="R.E.P.O. assemblies missing. Set GameDir." />
+    <Error Condition="!Exists('.deps/REPOLib.dll')" Text="Run scripts/build.ps1 with an installed BepInEx + REPOLib profile." />
+    <Error Condition="'@(CardTexture)' == ''" Text="Add ready square PNG images to assets/cards, then run scripts/build.ps1." />
+  </Target>
+</Project>

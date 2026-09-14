@@ -1,0 +1,11 @@
+.deps/
+.tools/
+.research/
+.testprofile/
+assets/source/
+bin/
+obj/
+dist/
+build/
+*.user
+local.props
