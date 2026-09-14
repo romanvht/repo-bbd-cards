@@ -1,10 +1,10 @@
 # ByeByeDPI Cards
 
-Добавляет в R.E.P.O. коллекционные карточки с мемами и фразами из BBD Manual.
-Находите их на уровнях и сдавайте вместе с другими ценными предметами.
+Коллекционные карточки с мемами и фразами из сообщества ByeByeDPI.
+Появляются на уровнях R.E.P.O. как ценные предметы.
 
 ![Карточки BBD Cards в игре](https://raw.githubusercontent.com/romanvht/repo-bbd-cards/HEAD/screenshots/screen-1.png)
 
-Мод должен быть установлен у всех игроков.
+Мод нужен всем игрокам.
 
-[Исходный код и инструкции на GitHub](https://github.com/romanvht/repo-bbd-cards)
+[Исходники и инструкции](https://github.com/romanvht/repo-bbd-cards)
