@@ -8,7 +8,6 @@ internal static class StockCollider
 {
     internal const float Padding = 0.015f;
 
-    /// <summary>Finds the donor's configured solid box collider.</summary>
     internal static BoxCollider FindTemplate(GameObject donor)
     {
         foreach (var box in donor.GetComponentsInChildren<BoxCollider>(true))
@@ -23,7 +22,6 @@ internal static class StockCollider
         throw new InvalidOperationException("Base prefab has no supported stock valuable collider.");
     }
 
-    /// <summary>Clones a stock collider and adds a fixed margin to its shape.</summary>
     internal static void Attach(BoxCollider template, Transform parent, string name,
         Vector3 center, Vector3 size, Quaternion rotation)
     {
@@ -41,7 +39,6 @@ internal static class StockCollider
         RemoveVisualization(obj);
     }
 
-    /// <summary>Removes the donor collider's editor visualization.</summary>
     private static void RemoveVisualization(GameObject obj)
     {
         var renderer = obj.GetComponent<MeshRenderer>();
@@ -96,7 +93,6 @@ internal static class StockCollider
         return bounds;
     }
 
-    /// <summary>Transforms one collider corner into the prefab's local coordinates.</summary>
     private static Vector3 GetCorner(Transform root, BoxCollider box, int corner)
     {
         var signs = new Vector3(

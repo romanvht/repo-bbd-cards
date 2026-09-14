@@ -6,7 +6,6 @@ namespace BbdCards.Helpers;
 
 internal static class MaterialFactory
 {
-    /// <summary>Finds the donor's stock rendering material.</summary>
     public static Material FindTemplate(GameObject donor)
     {
         var renderer = donor.GetComponentInChildren<MeshRenderer>(true);
@@ -19,7 +18,6 @@ internal static class MaterialFactory
         return renderer.sharedMaterial;
     }
 
-    /// <summary>Creates a clean material with the game's shader and the supplied surface properties.</summary>
     public static Material Create(Material template, string name, Color color, float metallic, float smoothness)
     {
         var material = new Material(template) { name = name };

@@ -10,7 +10,6 @@ namespace BbdCards.Helpers;
 internal sealed class ValuablePrefab : IDisposable
 {
     private readonly List<Object> resources = new();
-
     private bool registered;
 
     public GameObject Root { get; }
@@ -35,7 +34,6 @@ internal sealed class ValuablePrefab : IDisposable
         }
     }
 
-    /// <summary>Loads the stock HDD used as the base prefab.</summary>
     public static GameObject LoadDonor()
     {
         var donor = Resources.Load<GameObject>("Valuables/02 Small/Valuable Arctic HDD");
@@ -48,7 +46,6 @@ internal sealed class ValuablePrefab : IDisposable
         return donor;
     }
 
-    /// <summary>Creates persistent inactive storage for registered prefabs.</summary>
     public static GameObject CreateStorage(string name)
     {
         var storage = new GameObject(name);
@@ -67,7 +64,6 @@ internal sealed class ValuablePrefab : IDisposable
         return resource;
     }
 
-    /// <summary>Attaches a visible mesh and its material to the prefab.</summary>
     public void AddVisual(string name, Mesh mesh, Material material)
     {
         var visual = new GameObject(name);
@@ -78,7 +74,6 @@ internal sealed class ValuablePrefab : IDisposable
         visual.AddComponent<MeshRenderer>().sharedMaterial = material;
     }
 
-    /// <summary>Sets value, durability, mass and room bounds for the finished shape.</summary>
     public void Configure(float min, float max, float mass, float fragility, Vector3 center)
     {
         var valuable = Root.GetComponent<ValuableObject>();

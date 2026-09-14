@@ -6,11 +6,8 @@ namespace BbdCards;
 internal static class CardGeometry
 {
     public const float Side = 0.34f;
-
     public const float Thickness = 0.018f;
-
     public const float Radius = 0.018f;
-
     public const int CornerSegments = 6;
 
     internal readonly struct Vertex
@@ -21,7 +18,6 @@ internal static class CardGeometry
         public readonly float U;
         public readonly float V;
 
-        /// <summary>Stores a vertex position and texture coordinates.</summary>
         public Vertex(float x, float y, float z, float u, float v)
         {
             X = x;
@@ -35,10 +31,8 @@ internal static class CardGeometry
     internal sealed class Data
     {
         public readonly List<Vertex> Vertices = new();
-
         public readonly List<int> Triangles = new();
 
-        /// <summary>Appends a triangle in the supplied winding order.</summary>
         public void Triangle(int a, int b, int c)
         {
             Triangles.Add(a);
@@ -47,7 +41,6 @@ internal static class CardGeometry
         }
     }
 
-    /// <summary>Builds the two printed faces and the rounded rim.</summary>
     public static Data Create()
     {
         var data = new Data();
@@ -60,7 +53,6 @@ internal static class CardGeometry
         return data;
     }
 
-    /// <summary>Samples the perimeter of the rounded square.</summary>
     private static List<(float x, float y)> CreateRing()
     {
         var ring = new List<(float x, float y)>();

@@ -14,26 +14,19 @@ namespace BbdCards;
 public sealed class Plugin : BaseUnityPlugin
 {
     public const string Id = "romanvht.BbdCards";
-
     internal static Plugin Instance = null!;
 
     private readonly List<PrefabRef> registered = new();
 
     private ConfigEntry<bool> debugSpawn = null!;
-
     private ConfigEntry<float> min = null!;
-
     private ConfigEntry<float> max = null!;
-
     private ConfigEntry<float> mass = null!;
-
     private ConfigEntry<float> fragility = null!;
 
     private bool initialized;
-
     private int nextDebugCard;
 
-    /// <summary>Loads settings and installs the registration hook.</summary>
     private void Awake()
     {
         Instance = this;
@@ -46,13 +39,11 @@ public sealed class Plugin : BaseUnityPlugin
         Logger.LogInfo($"BBD Cards loaded: {CardAssets.Ids.Length} embedded images.");
     }
 
-    /// <summary>Binds a card setting that takes effect after restart.</summary>
     private ConfigEntry<float> Bind(string key, float value, float low, float high, string description)
     {
         return ConfigValues.Bind(Config, "Cards", key, value, low, high, description + " Restart after changes.");
     }
 
-    /// <summary>Builds and registers every embedded card once.</summary>
     internal void Initialize()
     {
         if (initialized)
@@ -95,7 +86,6 @@ public sealed class Plugin : BaseUnityPlugin
         }
     }
 
-    /// <summary>Creates one card with its image, stock collider and value settings.</summary>
     private void RegisterCard(string id, GameObject donor, Transform storage,
         BoxCollider collider, Material template, Mesh mesh)
     {
@@ -110,11 +100,9 @@ public sealed class Plugin : BaseUnityPlugin
 
         StockCollider.Attach(collider, prefab.Root.transform, "Card Collider", center, size, Quaternion.identity);
         prefab.Configure(min.Value, max.Value, mass.Value, fragility.Value, center);
-        prefab.Root.AddComponent<CardMarker>().CardId = id;
         registered.Add(prefab.Register());
     }
 
-    /// <summary>Spawns the next card when the host presses F9.</summary>
     private void Update()
     {
         if (!DebugSpawn.TryGetCamera(debugSpawn.Value, KeyCode.F9, registered.Count, out var camera))
@@ -130,15 +118,9 @@ public sealed class Plugin : BaseUnityPlugin
     }
 }
 
-public sealed class CardMarker : MonoBehaviour
-{
-    public string CardId = "";
-}
-
 [HarmonyPatch(typeof(RunManager), "Awake")]
 internal static class RunManagerPatch
 {
-    /// <summary>Registers cards after REPOLib is ready.</summary>
     [HarmonyPostfix, HarmonyAfter("REPOLib")]
     private static void Postfix() => Plugin.Instance.Initialize();
 }

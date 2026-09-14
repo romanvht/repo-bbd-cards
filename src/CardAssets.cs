@@ -16,7 +16,6 @@ internal static class CardAssets
             .Select(n => n.Substring(Prefix.Length, n.Length - Prefix.Length - 4))
             .OrderBy(n => n, StringComparer.Ordinal).ToArray();
 
-    /// <summary>Builds the shared rounded card mesh.</summary>
     public static Mesh CreateMesh()
     {
         var data = CardGeometry.Create();
@@ -33,7 +32,6 @@ internal static class CardAssets
         return mesh;
     }
 
-    /// <summary>Loads one card image into a clean material using the game's shader.</summary>
     public static Material CreateMaterial(string id, Material template)
     {
         using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(Prefix + id + ".png")
