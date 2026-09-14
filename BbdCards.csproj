@@ -4,7 +4,7 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <AssemblyName>BbdCards</AssemblyName>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <GameDir Condition="'$(GameDir)' == ''">D:\SteamLibrary\steamapps\common\REPO</GameDir>
     <RestorePackagesPath>$(MSBuildProjectDirectory)\.deps\packages</RestorePackagesPath>
