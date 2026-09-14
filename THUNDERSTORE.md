@@ -5,6 +5,6 @@
 
 ![Карточки BBD Cards в игре](https://raw.githubusercontent.com/romanvht/repo-bbd-cards/HEAD/screenshots/screen-1.png)
 
-Мод должен быть установлен у всех игроков. Нужны BepInEx и REPOLib — менеджер модов установит зависимости автоматически.
+Мод должен быть установлен у всех игроков.
 
 [Исходный код и инструкции на GitHub](https://github.com/romanvht/repo-bbd-cards)

@@ -1,7 +1,7 @@
 {
-  "name": "BbdCards",
+  "name": "ByeByeDPI Cards",
   "version_number": "0.1.0",
   "website_url": "",
-  "description": "BBD Manual cards for fun",
+  "description": "ByeByeDPI Manual cards for fun",
   "dependencies": ["BepInEx-BepInExPack-5.4.2305", "Zehs-REPOLib-4.2.0"]
 }
