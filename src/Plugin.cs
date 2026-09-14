@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace BbdCards;
 
-[BepInPlugin(Id, "BBD Cards", "0.1.3")]
+[BepInPlugin(Id, "BBD Cards", "0.1.4")]
 [BepInDependency("REPOLib", "4.2.0")]
 public sealed class Plugin : BaseUnityPlugin
 {
@@ -38,10 +38,10 @@ public sealed class Plugin : BaseUnityPlugin
     {
         Instance = this;
         debugSpawn = Config.Bind("Debug", "EnableSpawnKey", false, "Host: F9 spawns the next card during a level.");
-        min = Bind("ValueMin", 350f, 1, 100000, "Minimum base value; game multipliers apply.");
-        max = Bind("ValueMax", 850f, 1, 100000, "Maximum base value.");
+        min = Bind("ValueMin", 700f, 1, 100000, "Minimum base value; game multipliers apply.");
+        max = Bind("ValueMax", 1400f, 1, 100000, "Maximum base value.");
         mass = Bind("Mass", 0.25f, 0.1f, 30, "Mass; use identical settings on all clients.");
-        fragility = Bind("Fragility", 20f, 0, 100, "Impact fragility; use identical settings on all clients.");
+        fragility = Bind("Fragility", 35f, 0, 100, "Impact fragility; use identical settings on all clients.");
         new Harmony(Id).PatchAll(typeof(Plugin).Assembly);
         Logger.LogInfo($"BBD Cards loaded: {CardAssets.Ids.Length} embedded images.");
     }
