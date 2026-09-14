@@ -2,6 +2,8 @@
 
 Мод для R.E.P.O., который добавляет коллекционные карточки в список ценных предметов.
 
+[https://thunderstore.io/c/repo/p/romanvht/BbdCards/](https://thunderstore.io/c/repo/p/romanvht/BbdCards/)
+
 ## Установка
 
 Нужны R.E.P.O., BepInEx 5 и REPOLib 4.2.0.
